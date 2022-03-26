@@ -5,10 +5,23 @@ import data from '../../data';
 import styles from './SideComments.module.scss';
 import { CommentItem } from './CommentItem';
 import clsx from 'clsx';
-import { useComments } from '../../hooks/useComments';
+
+const comments = [
+  {
+    id: 1,
+    name: 'kiril',
+    text: 'title',
+    post: 'hello mazafaka'
+  },
+  {
+    id: 2,
+    name: 'Yura',
+    text: 'title2',
+    post: 'hello mazafaka 2'
+  }
+]
 
 export const SideComments = () => {
-  const { comments } = useComments();
   const [visible, setVisible] = React.useState(true);
 
   const toggleVisible = () => {

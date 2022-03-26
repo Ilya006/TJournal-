@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
-import CheckIcon from '@material-ui/icons/CheckOutlined';
-import AddIcon from '@material-ui/icons/AddOutlined';
+import CheckIcon from '@mui/icons-material/Check';
+import AddIcon from '@mui/icons-material/Add';
 
 import styles from './FollowButton.module.scss';
 

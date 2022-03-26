@@ -5,14 +5,9 @@ import MessageIcon from '@material-ui/icons/TextsmsOutlined';
 import UserAddIcon from '@material-ui/icons/PersonAddOutlined';
 
 import styles from './FullPost.module.scss';
-// import { OutputData } from '@editorjs/editorjs';
 
-// interface FullPostProps {
-//   title: string;
-//   blocks: OutputData['blocks'];
-// }
 
-export const FullPost: React.FC<any> = ({ title, blocks }) => {
+export const FullPost = ({ title, blocks }) => {
   return (
     <Paper elevation={0} className={styles.paper}>
       <div className="container">

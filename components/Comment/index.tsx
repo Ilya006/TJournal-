@@ -3,19 +3,9 @@ import { Typography, IconButton, MenuItem, Menu, Avatar } from '@material-ui/cor
 import MoreIcon from '@material-ui/icons/MoreHorizOutlined';
 
 import styles from './Comment.module.scss';
-// import { ResponseUser } from '../../utils/api/types';
-// import { Api } from '../../utils/api';
 
-// interface CommentPostProps {
-//   id: number;
-//   user: ResponseUser;
-//   text: string;
-//   createdAt: string;
-//   currentUserId: number;
-//   onRemove: (id: number) => void;
-// }
 
-export const Comment: React.FC<any> = ({ id, user, text, createdAt, currentUserId, onRemove }) => {
+export const Comment = ({ id, user, text, createdAt, currentUserId, onRemove }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -26,21 +16,6 @@ export const Comment: React.FC<any> = ({ id, user, text, createdAt, currentUserI
     setAnchorEl(null);
   };
 
-  const handleClickRemove = async () => {
-    // if (window.confirm('Удалить комментарий?')) {
-    //   try {
-    //     await Api().comment.remove(id);
-    //     onRemove(id);
-    //   } catch (err) {
-    //     console.warn('Error remove comment', err);
-    //     alert('Не удалось удалить комментарий');
-    //   } finally {
-    //     handleClose();
-    //   }
-    // }
-    console.log(13)
-    
-  };
 
   return (
     <div className={styles.comment}>
@@ -57,7 +32,7 @@ export const Comment: React.FC<any> = ({ id, user, text, createdAt, currentUserI
             <MoreIcon />
           </IconButton>
           <Menu anchorEl={anchorEl} elevation={2} open={Boolean(anchorEl)} onClose={handleClose} keepMounted>
-            <MenuItem onClick={handleClickRemove}>Удалить</MenuItem>
+            <MenuItem >Удалить</MenuItem>
             <MenuItem onClick={handleClose}>Редактировать</MenuItem>
           </Menu>
         </>

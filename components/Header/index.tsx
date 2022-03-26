@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Paper, Button, IconButton, Avatar, List, ListItem } from '@material-ui/core';
-// import ListItemButton from '@mui/material/ListItemButton';
+import ListItemButton from '@mui/material/ListItemButton';
 
 import {
   SearchOutlined as SearchIcon,
@@ -13,46 +13,23 @@ import {
 } from '@material-ui/icons';
 
 import styles from './Header.module.scss';
-import { AuthDialog } from '../AuthDialog';
+// import { AuthDialog } from '../AuthDialog';
 // import { useAppSelector } from '../../redux/hooks';
 // import { selectUserData } from '../../redux/slices/user';
-import { PostItem } from '../../utils/api/types';
+// import { PostItem } from '../../utils/api/types';
 // import { Api } from '../../utils/api';
 
-const userData = {
-  name: 'loh'
-}
+const posts = [
+  {
+    id: 1,
+    title: 'title header'
+  }
+]
+
+const userData = [2];
 
 export const Header: React.FC = () => {
-  // const userData = useAppSelector(selectUserData);
-  const [authVisible, setAuthVisible] = React.useState(false);
-  const [searchValue, setSearchValue] = React.useState('');
-  const [posts, setPosts] = React.useState<PostItem[]>([]);
 
-  const openAuthDialog = () => {
-    setAuthVisible(true);
-  };
-
-  const closeAuthDialog = () => {
-    setAuthVisible(false);
-  };
-
-  React.useEffect(() => {
-    if (authVisible && userData) {
-      setAuthVisible(false);
-    }
-  }, [authVisible, userData]);
-
-  const handleChangeInput = async (e) => {
-    // setSearchValue(e.target.value);
-    // try {
-    //   const { items } = await Api().post.search({ title: e.target.value });
-    //   setPosts(items);
-    // } catch (e) {
-    //   console.warn(e);
-    // }
-    console.log(123)
-  };
 
   return (
     <Paper classes={{ root: styles.root }} elevation={0}>
@@ -68,7 +45,7 @@ export const Header: React.FC = () => {
 
         <div className={styles.searchBlock}>
           <SearchIcon />
-          <input value={searchValue} onChange={handleChangeInput} placeholder="Поиск" />
+          <input placeholder="Поиск" />
           {posts.length > 0 && (
             <Paper className={styles.searchBlockPopup}>
               <List>
@@ -111,13 +88,13 @@ export const Header: React.FC = () => {
             </a>
           </Link>
         ) : (
-          <div className={styles.loginButton} onClick={openAuthDialog}>
+          <div className={styles.loginButton}>
             <UserIcon />
             Войти
           </div>
         )}
       </div>
-      <AuthDialog onClose={closeAuthDialog} visible={authVisible} />
+      {/* <AuthDialog /> */}
     </Paper>
   );
 };

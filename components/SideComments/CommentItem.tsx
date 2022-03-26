@@ -1,30 +1,25 @@
 import React from 'react';
 import styles from './SideComments.module.scss';
 import Link from 'next/link';
-import { PostItem, ResponseUser } from '../../utils/api/types';
 import { Avatar } from '@material-ui/core';
 
-interface CommentItemProps {
-  user: ResponseUser;
-  text: string;
-  post: PostItem;
-}
 
-export const CommentItem: React.FC<CommentItemProps> = ({ user, text, post }) => {
+
+export const CommentItem = ({ name, text, post }) => {
   return (
     <div className={styles.commentItem}>
       <div className={styles.userInfo}>
-        <Avatar style={{ marginRight: 10 }}>{user.fullName[0]}</Avatar>
-        <Link href={`/profile/${user.id}`}>
+        <Avatar style={{ marginRight: 10 }}>{name}</Avatar>
+        <Link href={`/profile/${name}`}>
           <a>
-            <b>{user.fullName}</b>
+            <b>{name}</b>
           </a>
         </Link>
       </div>
       <p className={styles.text}>{text}</p>
-      <Link href={`/news/${post.id}`}>
+      <Link href={`/news/${post}`}>
         <a>
-          <span className={styles.postTitle}>{post.title}</span>
+          <span className={styles.postTitle}>{post}</span>
         </a>
       </Link>
     </div>

@@ -2,15 +2,9 @@ import { Paper, Table, TableBody, TableCell, TableHead, TableRow, Typography, Ta
 
 import { MainLayout } from '../layouts/MainLayout';
 import { FollowButton } from '../components/FollowButton';
-import { Api } from '../utils/api';
-import { NextPage } from 'next';
-import { ResponseUser } from '../utils/api/types';
 
-interface RatingPageProps {
-  users: ResponseUser[];
-}
 
-const Rating: NextPage<RatingPageProps> = ({ users }) => {
+const Rating = ({ users }) => {
   return (
     <MainLayout>
       <Paper className="pl-20 pt-20 pr-20 mb-20" elevation={0}>
@@ -57,22 +51,5 @@ const Rating: NextPage<RatingPageProps> = ({ users }) => {
   );
 };
 
-export const getServerSideProps = async () => {
-  try {
-    const users = await Api().user.getAll();
-    return {
-      props: {
-        users,
-      },
-    };
-  } catch (err) {
-    console.log(err);
-  }
-  return {
-    props: {
-      users: null,
-    },
-  };
-};
 
 export default Rating;
